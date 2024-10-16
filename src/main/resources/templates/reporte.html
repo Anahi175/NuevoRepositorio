@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">reporte</title>
+</head>
+<body>
+    <h1 title th:text="${title}"></h1>
+
+    <div th:if ="${users.isEmpty()}" th:text="${Sin informacion!}"></div>
+
+    <table>
+       <thead>
+        <tr>
+            <th>oficina</th>
+            <th>ciudad</th>
+            <th>region</th>
+            <th>dir</th>
+            <th>objecto</th>
+            <th>ventas</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.oficina}"></td>
+            <td th:text="${user.cuidad}"></td>
+            <td th:text="${user.region}"></td>
+            <td th:if="${user.dir}" th:text="${user.dir}"></td>
+            <td th:if="${not (user.dir!=null)}" th:text="${'Sin informacion'}"></td>
+            <td th:if="${user.objecto}" th:text="${user.objecto}"></td>
+            <td th:if="${not (user.objecto!=null)}" th:text="${'Sin informacion'}"></td>
+            <td th:if="${user.ventas}" th:text="${user.ventas}"></td>
+            <td th:if="${not (user.ventas!=null)}" th:text="${'Sin informacion'}"></td>
+        </tr>
+      </tbody>
+
+
+    </table>
+
+</body>
+   
+</html>
